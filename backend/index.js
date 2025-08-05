@@ -28,10 +28,10 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/list', listRouter);
 
-app.use(express.static(path.join(_dirname, '/frontend/dist')));
+app.use(express.static(path.join(_dirname,'..', '/frontend/dist')));
 
 app.get('*', (_, res) => {
-  res.sendFile(path.join(_dirname, 'frontend', 'dist', 'index.html'))
+  res.sendFile(path.join(_dirname,'..', 'frontend', 'dist', 'index.html'))
 })
 
 app.use((error, req, res, next)=>{
