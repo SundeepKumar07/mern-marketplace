@@ -20,7 +20,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://mern-marketplace-roan.vercel.app',
+  origin: [
+  'https://mern-marketplace-roan.vercel.app',
+  'http://localhost:5173'
+ ],
   credentials: true
 }));
 
