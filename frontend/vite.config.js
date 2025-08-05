@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', // backend URL
+        target: 'https://mern-marketplace-production.up.railway.app', // backend URL
         changeOrigin: true,
         secure: false,
       },
