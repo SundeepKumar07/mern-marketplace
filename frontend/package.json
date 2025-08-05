@@ -5,7 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@railway/static",
+        "config": {
+          "buildCommand": "npm run build",
+          "outputDirectory": "dist"
+        }
+      }
+      ],
     "lint": "eslint .",
     "preview": "vite preview"
   },
