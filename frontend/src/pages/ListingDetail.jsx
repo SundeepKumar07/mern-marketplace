@@ -27,7 +27,7 @@ export default function ListingDetail() {
   useEffect(()=>{
     const fetchListing = async () => {
         try {
-            const res = await fetch(`/api/list/get-listing/${listingId}`);
+            const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/get-listing/${listingId}`);
             const data = await res.json();
             if(!data.success){
                 console.log(data.message);

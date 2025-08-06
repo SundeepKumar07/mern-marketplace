@@ -22,7 +22,7 @@ export default function SignIn() {
     if(login) dispatch(signInStart());
 
     try {
-      const url = login ? '/api/auth/sign-in' : '/api/auth/sign-up';
+      const url = login ? `${import.meta.env.VITE_API_BACKEND}/api/auth/sign-in` : `${import.meta.env.VITE_API_BACKEND}/api/auth/sign-up`;
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

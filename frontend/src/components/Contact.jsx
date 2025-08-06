@@ -7,7 +7,7 @@ export default function Contact({Listing}) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const url = `/api/user/get/${Listing.userRef}`;
+        const url = `${import.meta.env.VITE_API_BACKEND}/api/user/get/${Listing.userRef}`;
         const res = await fetch(url);
         const data = await res.json();
         await setLandlord(data);

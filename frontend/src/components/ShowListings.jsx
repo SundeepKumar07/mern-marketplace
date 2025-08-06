@@ -14,7 +14,7 @@ export default function ShowListings() {
     const fetchListing = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/user/listings/${currentUser.id}`);
+        const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/user/listings/${currentUser.id}`);
         const result = await res.json();
         if (!result) setError('No results found');
         setListings(result);
@@ -36,7 +36,7 @@ export default function ShowListings() {
 
   const deleteListing = async (listId) => {
     try {
-      const res = await fetch(`/api/list/delete-listing/${listId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/delete-listing/${listId}`, {
         method: 'DELETE',
       });
       const data = await res.json();

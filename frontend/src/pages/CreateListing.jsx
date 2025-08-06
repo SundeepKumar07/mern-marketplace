@@ -76,7 +76,7 @@ export default function CreateListing() {
     }
     setSubmitting(true);
     try {
-      const res = await fetch('/api/list/create-listing', {
+      const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/create-listing`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -126,7 +126,7 @@ export default function CreateListing() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
             {['sell', 'rent'].map((type) => (
               <label key={type} className="flex items-center gap-2">
-                <input type="checkbox" name="type" value={type} onChange={handleChange} checked={form.type === type} className='w-5' />
+                <input type="radio" name="type" value={type} onChange={handleChange} checked={form.type === type} className='w-5' />
                 {type.charAt(0).toUpperCase() + type.slice(1)}
               </label>
             ))}

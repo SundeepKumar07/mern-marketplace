@@ -32,11 +32,13 @@ export default function Profile() {
       const data = await res.json();
 
       // Send to backend to update user
-      const updateRes = await fetch('/api/user/update-photo', {
+      const url = import.meta.env.VITE_API_BACKEND;
+      const updateRes = await fetch(`${url}/api/user/update-photo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: "include",
         body: JSON.stringify({ avatar: data.secure_url }),
       });
 
@@ -50,7 +52,7 @@ export default function Profile() {
 
   const signOut = async() => {
     try {
-      const url = "/api/auth/sign-out";
+      const url = `${import.meta.env.VITE_API_BACKEND}/api/auth/sign-out`;
       const res = await fetch(url, {
         method: 'POST',
         credentials: "include",
@@ -64,7 +66,7 @@ export default function Profile() {
       }
 
     } catch (error) {
-      toast.error(error.message);
+      console.log(error.message);
     }
   }
 
@@ -73,7 +75,7 @@ export default function Profile() {
       const confirmDelete = window.confirm("Are you sure you want to delete your account?");
       if (!confirmDelete) return;
 
-      const url = '/api/auth/delete';
+      const url = `${import.meta.env.VITE_API_BACKEND}/api/auth/delete`;
       const res = await fetch(url, {
         method: "DELETE",
         credentials: "include"
@@ -86,7 +88,7 @@ export default function Profile() {
         navigate('/');
       }
     } catch (error) {
-      toast.error(error.message);
+      console.log(error.message);
     }
   }
 
@@ -95,7 +97,7 @@ export default function Profile() {
   const [verifyPassword, setVerifyPassword] = useState('');
   const handleVerifySubmit = async () => {
     try {
-      const res = await fetch('/api/user/verify-password', {
+      const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/user/verify-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: verifyPassword }),
@@ -109,7 +111,7 @@ export default function Profile() {
         setChangePass(false);
       }
     } catch (err) {
-      toast.error(error);
+      console.log(error);
     }
   };
 
@@ -126,7 +128,7 @@ export default function Profile() {
   const changePassword = async () => {
     dispatch(updateStart());
     try {
-      const url = '/api/user/update-password';
+      const url = `${import.meta.env.VITE_API_BACKEND}/api/user/update-password`;
       const res = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -145,7 +147,7 @@ export default function Profile() {
       console.log(data.user);
     } catch (error) {
       dispatch(updateFailure(error.message));
-      toast.error(error.message);
+      console.log(error.message);
     }
   }
 
@@ -153,7 +155,7 @@ export default function Profile() {
   const handleUpdateUser = async () => {
     dispatch(updateStart());
     try {
-      const url = '/api/user/update-user';
+      const url = `${import.meta.env.VITE_API_BACKEND}/api/user/update-user`;
       const res = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -173,7 +175,7 @@ export default function Profile() {
       console.log(data.user);
     } catch (error) {
       dispatch(updateFailure(error.message));
-      toast.error(error.message);
+      console.log(error.message);
     }
   }
 

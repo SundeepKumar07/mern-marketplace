@@ -21,15 +21,15 @@ export default function Home() {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const res1 = await fetch('/api/list/get-listings?offer=true&limit=3');
+        const res1 = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/get-listings?offer=true&limit=3`);
         const offer = await res1.json();
         setOfferListing(offer);
 
-        const res2 = await fetch('/api/list/get-listings?type=rent&limit=3');
+        const res2 = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/get-listings?type=rent&limit=3`);
         const rent = await res2.json();
         setRentListing(rent);
 
-        const res3 = await fetch('/api/list/get-listings?type=sell&limit=3');
+        const res3 = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/get-listings?type=sell&limit=3`);
         const sell = await res3.json();
         setSaleListing(sell);
       } catch (err) {
