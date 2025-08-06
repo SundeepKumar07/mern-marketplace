@@ -18,7 +18,6 @@ export default function Contact({Listing}) {
     fetchUser();
   }, [Listing.userRef])
 
-  console.log(message);
   return (
     <div className='border-sky-200 border-2'>
       <p><span className='font-bold'>Name</span> {landlord.username}</p>

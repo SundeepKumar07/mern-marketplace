@@ -78,6 +78,7 @@ export default function CreateListing() {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/list/create-listing`, {
         method: 'POST',
+        credentials: "include",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });

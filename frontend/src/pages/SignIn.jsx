@@ -46,7 +46,6 @@ export default function SignIn() {
       toast.success(data.message);
 
       if (login) {
-        console.log(data.user);
         dispatch(signInSuccess(data.user));
         navigate("/");
       } else {

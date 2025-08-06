@@ -99,6 +99,7 @@ export default function Profile() {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/user/verify-password`, {
         method: 'POST',
+        credentials: "include",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: verifyPassword }),
       });
@@ -122,7 +123,6 @@ export default function Profile() {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form);
   }
 
   const changePassword = async () => {
@@ -131,6 +131,7 @@ export default function Profile() {
       const url = `${import.meta.env.VITE_API_BACKEND}/api/user/update-password`;
       const res = await fetch(url, {
         method: 'PUT',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },
@@ -144,7 +145,6 @@ export default function Profile() {
       }
       toast.success(data.message);
       dispatch(updateSuccess(data.user));
-      console.log(data.user);
     } catch (error) {
       dispatch(updateFailure(error.message));
       console.log(error.message);
@@ -158,6 +158,7 @@ export default function Profile() {
       const url = `${import.meta.env.VITE_API_BACKEND}/api/user/update-user`;
       const res = await fetch(url, {
         method: 'PUT',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },
