@@ -80,8 +80,8 @@ export const googleSignIn = async (req, res, next) => {
     }else{
       const generatePassword = '00000000';
       const hashPassword = await bcrypt.hash(generatePassword, 10);
-      const newUser = new User({username: req.body.name.split(" ").join("").toLowerCase() + Math.random().toString(36).slice(-4), email: req.body.email, password: hashPassword, avatar: req.body.photo});
-      const user = await newUser.save();
+      user = new User({username: req.body.name.split(" ").join("").toLowerCase() + Math.random().toString(36).slice(-4), email: req.body.email, password: hashPassword, avatar: req.body.photo});
+      await user.save();
 
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
         expiresIn: '7d',
