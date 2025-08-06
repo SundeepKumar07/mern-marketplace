@@ -190,7 +190,7 @@ export default function Profile() {
             src={currentUser?.avatar || '/default.jpg'}
             alt="Profile"
             onClick={() => fileRef.current.click()}
-            className="w-24 h-24 rounded-full object-cover border-2 border-blue-500 cursor-pointer hover:opacity-80 transition"
+            className="w-24 h-24 rounded-full object-cover border-2 cursor-pointer hover:opacity-80 transition"
           />
           <input
             type="file"
