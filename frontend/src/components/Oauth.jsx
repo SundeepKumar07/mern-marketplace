@@ -33,7 +33,7 @@ export default function Oauth() {
         }
 
       dispatch(signInSuccess(data.user));
-      toast.success('Google Sign-In Successful!');
+      toast.success('Google Sign-In Successful!, your password is 00000000');
       navigate('/');
     } catch (error) {
         console.log("google error", error);

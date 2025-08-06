@@ -78,7 +78,7 @@ export const googleSignIn = async (req, res, next) => {
       });
 
     }else{
-      const generatePassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+      const generatePassword = '00000000';
       const hashPassword = await bcrypt.hash(generatePassword, 10);
       const newUser = new User({username: req.body.name.split(" ").join("").toLowerCase() + Math.random().toString(36).slice(-4), email: req.body.email, password: hashPassword, avatar: req.body.photo});
       const user = await newUser.save();
