@@ -18,6 +18,7 @@ export default function Oauth() {
 
         const res = await fetch(`${import.meta.env.VITE_API_BACKEND}/api/auth/google`, {
             method: 'POST',
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/json',
             }, 
